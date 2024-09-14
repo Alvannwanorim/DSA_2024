@@ -14,16 +14,13 @@ class MinStack(object):
             self.min_stack.append(val)
         else:
             self.min_stack.append(min(self.min_stack[-1],val))
-        
-
+    
     def pop(self):
         """
         :rtype: None
         """
         self.stack.pop()
         self.min_stack.pop()
-
-        
 
     def top(self):
         """
