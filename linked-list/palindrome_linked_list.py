@@ -23,4 +23,30 @@ class Solution:
             l += 1
             r -= 1
         return True
+class Solution2:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if not head or not head.next:
+            return True
+        slow = head
+        fast = head.next
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
         
+        prev = None
+        # 2 <- 3 <- 4 <- 5
+        while slow:
+            node = ListNode(slow.val)
+            node.next = prev
+            prev = node
+            slow = slow.next
+        
+        start = head
+        end = prev
+        while end:
+            if start.val != end.val:
+                return False
+            start = start.next
+            end = end.next
+        return True        
