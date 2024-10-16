@@ -16,5 +16,21 @@ def sameNumbers(nums1: List[int], nums2: List[int]):
     return True
 
 
-print(sameNumbers([1,2,3,3,4,5],[1,2,3,3,4,5]))
-print(sameNumbers([1,2,3,3,4,5],[1,2,3,3,4,4]))
+def sameNumbers2(nums1: List[int], nums2: List[int]):
+    hashMap = {}
+    for n in nums1:
+        if n not in hashMap:
+            hashMap[n] = 1
+        else:
+            hashMap[n] += 1
+    for n in nums2:
+        if n not in hashMap:
+            return False
+        hashMap[n] -= 1
+        if hashMap[n] < 0:
+            return False
+    return True 
+
+
+print(sameNumbers2([1,2,3,3,4,5],[1,2,3,3,4,5]))
+print(sameNumbers2([1,2,3,3,4,5],[1,2,3,3,4,4]))
