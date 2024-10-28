@@ -4,8 +4,8 @@ from typing import Any
 class Test:
     def __init__(self) -> None:
         pass
-    # def __call__(self, *args: Any, **kwds: Any) -> Any:
-    #     print("hello")
+    def __call__(self, *args: Any, **kwds: Any) -> Any:
+        print("hello")
 
 obj = Test()
 obj()
