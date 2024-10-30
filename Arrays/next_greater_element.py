@@ -18,6 +18,25 @@ class Solution:
                         break
                 
         return res
-    
-sol = Solution()
-print(sol.nextGreaterElement([1,3,5,2,4],[6,5,4,3,2,1,7]))
+
+
+class Solution2:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1Idx = {n:i for i, n in enumerate(nums1)}
+        res = [-1] * len(nums1)
+        stack = []
+        for i in range(len(nums2)):
+            # print(stack)
+            cur = nums2[i]
+            # print(cur)
+            while stack and cur > stack[-1]:
+                  val = stack.pop()
+                  idx = nums1Idx[val]
+                  res[idx] = cur
+            if cur in nums1Idx:
+                stack.append(cur)
+        return res
+                  
+        
+sol = Solution2()
+print(sol.nextGreaterElement([2,4],[1,2,3,4]))
