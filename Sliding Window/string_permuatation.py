@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         if len(s1) > len(s2): return False
@@ -30,3 +33,25 @@ class Solution:
                 matches -= 1
             l += 1
         return matches == 26
+
+
+class Solution2:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        len1, len2 = len(s1), len(s2)
+
+        if len1  > len2:
+            return False
+
+        s1_count = Counter(s1)
+        window_count = Counter(s2[:len1])
+
+        for i in range(len2 - len1):
+            if s1_count == window_count:
+                return True
+            
+            window_count[s2[i]] -= 1
+            if window_count[s2[i]] == 0:
+                del window_count[s2[i]] 
+            
+            window_count[s2[i + len1]] += 1
+        return s1_count == window_count
