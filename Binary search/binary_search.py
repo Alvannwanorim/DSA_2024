@@ -7,9 +7,9 @@ class Solution:
         while l <= r:
             mid = (l + r) //2
             if nums[mid] > target:
-                r -= 1
+                r = mid - 1
             elif nums[mid] < target:
-                l += 1
+                l = mid + 1
             else:
                 return mid
         return -1
