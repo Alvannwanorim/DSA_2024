@@ -6,8 +6,14 @@ def combinationRecurs(elems, s, indx, li):
         combinationRecurs(elems,s, i + 1, li)
 
 def combinationIter(elems):
-    pass
-
+    level =[""]
+    for i in range(len(elems)):
+        nList= []
+        for item in level:
+            nList.append(item+ elems[i])
+        level += nList
+    return nList
 res = []
-combinationRecurs("abcd","",0,res)
-print(res)
+# combinationRecurs("abcd","",0,res)
+print(combinationIter("abcd"))
+# print(res)
