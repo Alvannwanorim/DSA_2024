@@ -18,5 +18,10 @@ def fib2(n):
             return fibTable[n]
     return calc(n)
 
-print(fib2(5))
-print(fib2(10))
+def fib3(n):
+    a, b = 0, 1
+    for i in range(n):
+        a, b = b, a+b
+    return a
+print(fib3(5))
+print(fib3(10))
